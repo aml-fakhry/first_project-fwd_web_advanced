@@ -4,6 +4,7 @@
   "description": "sample image processing Api",
   "main": "app.js",
   "scripts": {
+    "start": "npx tsc && node dist/app.js",
     "dev": "nodemon src/app.ts"
   },
   "author": "Aml Fakhri",
