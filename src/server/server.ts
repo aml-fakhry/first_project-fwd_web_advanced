@@ -2,7 +2,9 @@ import cors from 'cors';
 import express, { Application } from 'express';
 
 import { testRelativeRouter, testRouter } from '../routes';
+import { Logger } from '../shared';
 import { Config } from './../../config/custom-environment-variables';
+import { errorHandler } from './../shared/middleware/error-handler.middleware';
 
 const port = 3000;
 
@@ -21,12 +23,15 @@ function registerRouter(app: Application) {
 export function setupServer(app: Application) {
   setRequestOptions(app);
   registerRouter(app);
+  app.use(errorHandler);
 }
 
 export function startServer(app: Application) {
   app.listen(port, () => {
-    console.log(
-      `Server is running now at http://localhost:${Config.APP_PORT}, under the ${process.env.NODE_ENV} environment`
+    Logger.info(
+      `Server is running now at http://localhost:${Config.APP_PORT}, under the ${process.env.NODE_ENV} environment`,
+      null,
+      true
     );
   });
 }
