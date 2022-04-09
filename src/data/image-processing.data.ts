@@ -20,6 +20,7 @@ export class imageProcessDataAccess {
       console.log(error);
     }
   }
+
   static async resize(filename: string, width: number, height: number): Promise<boolean> {
     const imageExistence = fs.existsSync(path.join(appRootDir + `/assets/full/${filename}.jpg`));
     if (imageExistence && width > 0 && height > 0) {

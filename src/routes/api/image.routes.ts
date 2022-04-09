@@ -11,7 +11,7 @@ export const imageRouter = express.Router();
  */
 export const imageRelativeRouter = 'images';
 
-imageRouter.get('/re', async (req, res) => {
+imageRouter.get('/', async (req, res) => {
   const result = await imageProcessDataAccess.resize(
     req.query.filename as string,
     parseInt(req.query.width as string),

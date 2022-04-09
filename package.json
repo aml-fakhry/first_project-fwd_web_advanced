@@ -4,7 +4,7 @@
   "description": "sample image processing Api",
   "main": "app.js",
   "scripts": {
-    "start:build": "npx tsc && nodemon dist/.js",
+    "start:build": "npx tsc && eslint . --fix && nodemon dist/src/app.js",
     "build": "npx tsc",
     "dev": "nodemon src/app.ts",
     "lint": "eslint .",
