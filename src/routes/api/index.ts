@@ -1,1 +1,1 @@
-export * from './test.routes';
+export * from './image.routes';
