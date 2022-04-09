@@ -1,10 +1,18 @@
 import cors from 'cors';
 import express, { Application } from 'express';
+import path from 'path';
 
 import { imageRelativeRouter, imageRouter } from '../routes';
 import { Logger } from '../shared';
 import { Config } from './../../config/custom-environment-variables';
 import { errorHandler } from './../shared/middleware/error-handler.middleware';
+
+function setStaticsOptions(app: Application) {
+  app.use('trust server');
+  app.use('full', express.static(path.join(__dirname, '/assets/full')));
+  app.use('thump', express.static(path.join(__dirname, '/assets/thump')));
+  app.use(express.urlencoded({ extended: true }));
+}
 
 function setRequestOptions(app: Application) {
   app.use(cors());
