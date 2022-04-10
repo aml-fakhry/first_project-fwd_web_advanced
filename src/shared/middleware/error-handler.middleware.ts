@@ -10,7 +10,6 @@ import { Logger } from './../utils/logger.util';
  * @param res The express response instance.
  * @param next The next middleware but actually this should be the last middleware in the pipeline, don't remove this parameter it's important.
  */
-
 export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction): void {
   Logger.error(err.message, err);
   InternalServerError(res, err);

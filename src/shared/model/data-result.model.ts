@@ -1,0 +1,14 @@
+import { AppHttpResponseError } from './app-http-response-error.model';
+export interface DataResult {
+  /* Gets and sets result from operations. */
+  data: unknown;
+
+  /* Gets or sets validation errors that prevent process complete. */
+  validationErrors: AppHttpResponseError[];
+
+  /* Use when check existence. */
+  isNotFound: boolean;
+
+  /* Gets or sets error that prevent process complete. */
+  error: Error;
+}

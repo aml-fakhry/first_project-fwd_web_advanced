@@ -13,12 +13,22 @@ export function OK(res: Response, filename: string): unknown {
 }
 
 /**
- * Returns a not found response with 200 status code.
+ * Returns a not found response with 404 status code.
  * @param res The http-response to be modified.
  * @param body An optional body that will be sent within the response' body.
  */
 export function NotFound(res: Response, body?: AppHttpResponse): Response {
   return body ? res.status(404).send(body) : res.status(404).send();
+}
+
+/**
+ * Returns a bad-request response with 400 status code.
+ * @param res The http-response to be modified.
+ * @param body An optional body that will be sent within the response' body.
+ */
+
+export function BadRequest(res: Response, body: AppHttpResponse): Response {
+  return body ? res.status(400).send(body) : res.send();
 }
 
 /**
