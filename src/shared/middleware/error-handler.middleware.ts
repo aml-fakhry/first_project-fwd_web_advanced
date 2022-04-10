@@ -12,5 +12,6 @@ import { Logger } from './../utils/logger.util';
  */
 export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction): void {
   Logger.error(err.message, err);
+
   InternalServerError(res, err);
 }

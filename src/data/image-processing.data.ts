@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
-import { AppError, AppErrorCode } from '../shared';
 
+import { AppError, AppErrorCode, DataResult } from '../shared';
 import { appRootDir } from './../app';
-import { DataResult } from './../shared/model/data-result.model';
 
 export class imageProcessDataAccess {
   /**
@@ -17,11 +16,17 @@ export class imageProcessDataAccess {
   static async resizeImage(filename: string, width: number, height: number): Promise<DataResult> {
     const result: DataResult = {} as DataResult;
     try {
-      const imageExistenceInFull = fs.existsSync(path.join(appRootDir + `/assets/full/${filename}.jpg`));
-      const imageExistenceInThumb = fs.existsSync(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg'));
+      /**
+       * Get data to be validate.
+       */
+      const [imageExistenceInFull, imageExistenceInThumb] = [
+        fs.existsSync(path.join(appRootDir + `/assets/full/${filename}.jpg`)),
+        fs.existsSync(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg')),
+      ];
 
       //#region validation
       if (!imageExistenceInFull) {
+        /* Check if image exist in 'full' folder. */
         result.validationErrors = [
           {
             code: AppErrorCode.IsRequired,
@@ -32,6 +37,7 @@ export class imageProcessDataAccess {
         ];
         return result;
       } else if (imageExistenceInThumb) {
+        /* Check if image exist in 'thumb' folder. */
         result.validationErrors = [
           {
             code: AppErrorCode.ValueExists,
@@ -42,6 +48,7 @@ export class imageProcessDataAccess {
         ];
         return result;
       } else if (width <= 0 || height <= 0) {
+        /* Check if image height and width not equal 0 . */
         result.validationErrors = [
           {
             code: AppErrorCode.IncorrectValue,
@@ -54,12 +61,12 @@ export class imageProcessDataAccess {
       }
       //#endregion
 
-      result.isNotFound = !imageExistenceInFull;
-
       result.data = await sharp(appRootDir + `/assets/full/${filename}.jpg`)
         .withMetadata()
         .resize(width, height /* , { withoutEnlargement: true } */)
         .toFile(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg'));
+
+      result.isNotFound = !imageExistenceInFull;
     } catch (error) {
       result.error = error;
     }

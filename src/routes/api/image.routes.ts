@@ -1,8 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { imageProcessDataAccess } from './../../data/image-processing.data';
 import { NotFound, OK } from '../../shared/utils/http-response.util';
-import e from 'express';
-import { BadRequest } from './../../shared/utils/http-response.util';
 
 /* Image router to hold all modules route. */
 export const imageRouter = express.Router();
