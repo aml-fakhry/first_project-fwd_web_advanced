@@ -168,6 +168,7 @@ Inspiration, code snippets, etc.
 
 ## Project structure.
 
+```
 .
 📦src
 ┣ 📂assets
@@ -208,3 +209,4 @@ Inspiration, code snippets, etc.
 ┃ ┃ ┗ 📜reporter.ts
 ┃ ┗ 📜app.spec.ts
 ┗ 📜app.ts
+```
