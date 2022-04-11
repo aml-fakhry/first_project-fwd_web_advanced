@@ -168,6 +168,7 @@ Inspiration, code snippets, etc.
 
 ## Project structure.
 
+.
 📦src
 ┣ 📂assets
 ┃ ┣ 📂full
