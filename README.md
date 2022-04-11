@@ -50,7 +50,7 @@ npm run start:build
 - Run test program.
 
 ```
-npm run test
+npm test
 ```
 
 - Lint script.
@@ -62,7 +62,7 @@ npm run lint
 - Format script.
 
 ```
-npm run formate
+npm run format
 ```
 
 - clear thumb images script.
