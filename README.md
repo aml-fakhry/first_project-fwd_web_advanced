@@ -66,13 +66,6 @@ npm run clearThumb
 
 - [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/125bacc47857a5b173da?action=collection%2Fimport)
 
-## Authors
-
-Contributors names and contact info
-
-ex. Aml fakhri
-ex. [@aml_fakhri](amlfakhry13@gmail.com)
-
 ## Functionality
 
 1- Resize image
@@ -199,3 +192,10 @@ Inspiration, code snippets, etc.
 ┃ ┗ 📜app.spec.ts
 ┗ 📜app.ts
 ```
+
+## Authors
+
+Contributors names and contact info
+
+ex. Aml fakhri
+ex. [@aml_fakhri](amlfakhry13@gmail.com)
