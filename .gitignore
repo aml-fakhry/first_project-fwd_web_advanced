@@ -1,9 +1,8 @@
-/node_modules
-/public
+.node_modules
 /dist
-/.angular
 logs
 *.log
 /logs
 
 
+node_modules
