@@ -168,15 +168,6 @@ Inspiration, code snippets, etc.
 
 ## Project structure.
 
-📦config
-┗ 📜custom-environment-variables.ts
-📦dist
-📦logs
-┣ 📜errors.log
-┗ 📜logs.log
-📦spec
-┗ 📂support
-┃ ┗ 📜jasmine.json
 📦src
 ┣ 📂assets
 ┃ ┣ 📂full
