@@ -4,11 +4,13 @@
   "description": "sample image processing Api",
   "main": "app.js",
   "scripts": {
-    "start:build": "npx tsc && eslint . --fix && nodemon dist/src/app.js",
-    "build": "npx tsc",
-    "test": "rm -R ./dist && npx tsc && npm run lint:fix && cp -R ./src/assets ./dist/src/assets && jasmine",
     "dev": "nodemon src/app.ts",
+    "start:build": "npm run build && npm run copyAssets && node dist/src/app.js",
+    "test": "npm run build && npm run copyAssets && jasmine",
+    "build": "rm -R ./dist && npx tsc && npm run lint:fix",
+    "copyAssets": "cp -R ./src/assets ./dist/src/assets",
     "lint": "eslint .",
+    "clearThumb": "rm -R ./src/assets/thumb/**",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write src/**/*.ts"
   },

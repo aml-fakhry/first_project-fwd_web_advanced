@@ -19,8 +19,6 @@ imageRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
       parseInt(req.query.height as string)
     );
 
-    console.log({ result });
-
     if (result.error) {
       next(result.error);
     } else if (result.isNotFound) {

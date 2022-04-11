@@ -47,7 +47,6 @@ const request = supertest(app);
 describe('Test image processing API', () => {
   it('Pass when response status equal 200', async () => {
     const response = await request.get('/api/images?filename=pic1&width=300&height=300');
-    console.log({ response });
     expect(response.status).toBe(200);
   });
 
