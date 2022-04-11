@@ -6,13 +6,6 @@ Create an image processing API that resizes and saves images to user specificati
 
 Create an image processing API that resizes and saves images to user specifications when visiting a URL
 
-## Getting Started
-
-### Dependencies
-
-- Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-- ex. Windows 10
-
 ### Installing
 
 - You cane download my project.
@@ -23,16 +16,12 @@ git clone https://github.com/aml-fakhry/first_project-fwd_web_advanced.git
 
 - project requires having node installed https://nodejs.org/en/download/
 
-```
-  run npm install to install the dependencies
-```
-
 ### Executing program (scripts)
 
 - Install all dependencies
 
 ```
-Install all dependencies npm install
+npm install
 ```
 
 - Run the program in development environment.
