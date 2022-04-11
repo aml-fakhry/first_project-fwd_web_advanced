@@ -103,5 +103,6 @@
     "useUnknownInCatchVariables": false
   },
   "exclude": ["node_modules", "./dist", "spec"],
-  "include": ["./src/"]
+  "include": ["./src/"],
+  "assets": ["./src/assets/*"]
 }

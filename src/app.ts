@@ -1,11 +1,11 @@
 import express, { Application } from 'express';
 import * as server from './server';
 
-const app: Application = express();
+export const app: Application = express();
 
-export const myFunc = (num: number): number => {
-  return num * num;
-};
+// export const myFunc = (num: number): number => {
+//   return num * num;
+// };
 
 /* Set app root directory name */
 export const appRootDir = __dirname;

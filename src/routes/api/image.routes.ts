@@ -19,12 +19,14 @@ imageRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
       parseInt(req.query.height as string)
     );
 
+    console.log({ result });
+
     if (result.error) {
       next(result.error);
     } else if (result.isNotFound) {
       NotFound(res);
     } else if (result.validationErrors && result.validationErrors.length) {
-      res.send(result.validationErrors[0].detail);
+      res.status(400).send(result.validationErrors[0].detail);
     } else if (result.data) {
       OK(res, `/assets/full/${req.query.filename}.jpg`);
     }

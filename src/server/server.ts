@@ -11,7 +11,6 @@ import { errorHandler } from './../shared/middleware/error-handler.middleware';
  * @param app the express application.
  */
 function setRequestOptions(app: Application) {
-  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 }
