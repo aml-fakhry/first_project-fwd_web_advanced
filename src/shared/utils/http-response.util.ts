@@ -22,16 +22,6 @@ export function NotFound(res: Response, body?: AppHttpResponse): Response {
 }
 
 /**
- * Returns a bad-request response with 400 status code.
- * @param res The http-response to be modified.
- * @param body An optional body that will be sent within the response' body.
- */
-
-export function BadRequest(res: Response, body: AppHttpResponse): Response {
-  return body ? res.status(400).send(body) : res.send();
-}
-
-/**
  * Returns an internal server error response with 500 status code.
  * @param res The http-response to be modified.
  * @param err The error or error-message to be sent within the response' body.

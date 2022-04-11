@@ -46,12 +46,12 @@ describe('Check if returned data from resizeImage().', () => {
 const request = supertest(app);
 describe('Test image processing API', () => {
   it('Pass when response status equal 200', async () => {
-    const response = await request.get('/api/images?filename=pic1&width=300&height=300');
+    const response = await request.get('/api/images?filename=pic2&width=300&height=300');
     expect(response.status).toBe(200);
   });
 
   it('Pass when it fails because it is already processed.', async () => {
-    const response = await request.get('/api/images?filename=pic1&width=300&height=300');
+    const response = await request.get('/api/images?filename=pic2&width=300&height=300');
     expect(response.status).toBe(400);
     expect(response.text).toBe('Ooh, this image processed before please use a new one.');
   });

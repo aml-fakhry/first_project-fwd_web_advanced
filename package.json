@@ -7,7 +7,7 @@
     "dev": "nodemon src/app.ts",
     "start:build": "npm run build && npm run copyAssets && node dist/src/app.js",
     "test": "npm run build && npm run copyAssets && jasmine",
-    "build": "rm -R ./dist && npx tsc && npm run lint:fix",
+    "build": "rm -rf ./dist && npx tsc && npm run lint:fix",
     "copyAssets": "cp -R ./src/assets ./dist/src/assets",
     "lint": "eslint .",
     "clearThumb": "rm -R ./src/assets/thumb/**",
