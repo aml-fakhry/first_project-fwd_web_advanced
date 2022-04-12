@@ -26,7 +26,7 @@ imageRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
     } else if (result.validationErrors && result.validationErrors.length) {
       res.status(400).send(result.validationErrors[0].detail);
     } else if (result.data) {
-      OK(res, `/assets/full/${req.query.filename}.jpg`);
+      OK(res, result.data);
     }
   } catch (error) {
     next(error);

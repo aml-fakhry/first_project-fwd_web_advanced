@@ -36,17 +36,6 @@ export class imageProcessDataAccess {
           },
         ];
         return result;
-      } else if (imageExistenceInThumb) {
-        /* Check if image exist in 'thumb' folder. */
-        result.validationErrors = [
-          {
-            code: AppErrorCode.ValueExists,
-            source: `${filename}.jpg`,
-            title: AppError.ValueExists,
-            detail: 'Ooh, this image processed before please use a new one.',
-          },
-        ];
-        return result;
       } else if (width <= 0 || height <= 0) {
         /* Check if image height and width not equal 0 . */
         result.validationErrors = [
@@ -61,10 +50,15 @@ export class imageProcessDataAccess {
       }
       //#endregion
 
-      result.data = await sharp(appRootDir + `/assets/full/${filename}.jpg`)
-        .withMetadata()
-        .resize(width, height /* , { withoutEnlargement: true } */)
-        .toFile(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg'));
+      /** Check existence of image. */
+      if (!imageExistenceInThumb) {
+        await sharp(appRootDir + `/assets/full/${filename}.jpg`)
+          .withMetadata()
+          .resize(width, height /* , { withoutEnlargement: true } */)
+          .toFile(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg'));
+      }
+
+      result.data = `/assets/thumb/thumb_` + filename + '.jpg';
 
       result.isNotFound = !imageExistenceInFull;
     } catch (error) {

@@ -20,11 +20,6 @@ describe('Check if image exist in full or thumb folders.', () => {
     const result = fs.existsSync(fullPic1Path);
     expect(result).toBeTruthy();
   });
-
-  it('Pass when image not exist in full folder.', () => {
-    const result = fs.existsSync(thumbPic1Path);
-    expect(result).not.toBeTruthy();
-  });
 });
 
 describe('Check if returned data from resizeImage().', () => {
@@ -32,9 +27,6 @@ describe('Check if returned data from resizeImage().', () => {
     const result = await imageProcessDataAccess.resizeImage('pic1', 300, 300);
 
     expect(result.data).toBeTruthy();
-    expect(result.data.format).toBe('jpeg');
-    expect(result.data.width).toBe(300);
-    expect(result.data.width).toBe(300);
     expect(result.validationErrors).toBeUndefined();
     expect(result.isNotFound).toBeFalsy();
   });
@@ -50,9 +42,8 @@ describe('Test image processing API', () => {
     expect(response.status).toBe(200);
   });
 
-  it('Pass when it fails because it is already processed.', async () => {
-    const response = await request.get('/api/images?filename=pic2&width=300&height=300');
+  it('Pass when response status equal 400.', async () => {
+    const response = await request.get('/api/images?filename=pic77&width=300&height=300');
     expect(response.status).toBe(400);
-    expect(response.text).toBe('Ooh, this image processed before please use a new one.');
   });
 });
