@@ -21,7 +21,7 @@ export class imageProcessDataAccess {
        */
       const [imageExistenceInFull, imageExistenceInThumb] = [
         fs.existsSync(path.join(appRootDir + `/assets/full/${filename}.jpg`)),
-        fs.existsSync(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg')),
+        fs.existsSync(path.join(appRootDir + `/assets/thumb/thumb_${this.getFileSuffix(filename, width, height)}.jpg`)),
       ];
 
       //#region validation
@@ -55,15 +55,20 @@ export class imageProcessDataAccess {
         await sharp(appRootDir + `/assets/full/${filename}.jpg`)
           .withMetadata()
           .resize(width, height /* , { withoutEnlargement: true } */)
-          .toFile(path.join(appRootDir + `/assets/thumb/thumb_` + filename + '.jpg'));
+          .toFile(path.join(appRootDir + `/assets/thumb/thumb_${this.getFileSuffix(filename, width, height)}.jpg`));
       }
 
-      result.data = `/assets/thumb/thumb_` + filename + '.jpg';
+      result.data = `/assets/thumb/thumb_${this.getFileSuffix(filename, width, height)}.jpg`;
 
       result.isNotFound = !imageExistenceInFull;
     } catch (error) {
       result.error = error;
     }
     return result;
+  }
+
+  /*  Get File suffix. */
+  static getFileSuffix(filename: string, width: number, height: number) {
+    return `${filename}_${width}_${height}`;
   }
 }
