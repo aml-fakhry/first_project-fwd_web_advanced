@@ -4,7 +4,7 @@ import { AppHttpResponseError } from './app-http-response-error.model';
  */
 export interface DataResult {
   /* Gets and sets result from operations. */
-  data: any;
+  data: string;
 
   /* Gets or sets validation errors that prevent process complete. */
   validationErrors: AppHttpResponseError[];
