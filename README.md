@@ -6,6 +6,10 @@ Create an image processing API that resizes and saves images to user specificati
 
 Create an image processing API that resizes and saves images to user specifications when visiting a URL
 
+## Udacity review about this project
+
+![database_diagram](udacity_review.png)
+
 ### Installing
 
 - You cane download my project.
